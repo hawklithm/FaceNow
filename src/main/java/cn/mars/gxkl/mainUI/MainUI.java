@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.JViewport;
 import javax.swing.border.MatteBorder;
 
 import cn.mars.gxkl.netty.MessageManage;
@@ -38,21 +37,21 @@ public class MainUI extends JFrame {
 		lineWindowPanel = new LineWindowPanel[10];
 		initialization();
 		messageManager = new MessageManage(lineWindowPanel,Constant.processName[0],now);
-		while(!messageManager.getACK()) {
-			if(!messageManager.getConnectionStatus()) {
-				JOptionPane.showMessageDialog(null, "连接服务器失败","错误",JOptionPane.ERROR_MESSAGE);
-				continue;
-			}
-			try {
-				Thread.sleep(20);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		if(messageManager.getACK()) {
-			new Thread(messageManager).start();
-		}
+//		while(!messageManager.getACK()) {
+//			if(!messageManager.getConnectionStatus()) {
+//				JOptionPane.showMessageDialog(null, "连接服务器失败","错误",JOptionPane.ERROR_MESSAGE);
+//				continue;
+//			}
+//			try {
+//				Thread.sleep(20);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//		if(messageManager.getACK()) {
+//			new Thread(messageManager).start();
+//		}
 	}
 	
 	private void initHeightAndWidth() {

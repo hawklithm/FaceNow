@@ -57,7 +57,7 @@ public class MessageManage implements Runnable {
 		this.frame = frame;
 		this.emerg = null;
 		this.url = "/ProcessInfoManager";
-		initialization();
+//		initialization();
 	}
 
 	public void initialization() {
@@ -86,11 +86,7 @@ public class MessageManage implements Runnable {
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		while (!closed) {
-//			if(!client.isConnected()) {
-//				continue;
-//			}
 			emergHander();
 			if(sendRequest) {
 				try {

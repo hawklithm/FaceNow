@@ -13,10 +13,15 @@ public class MainProgram {
 //		test();
 		int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 		int height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-		MainUI frame = new MainUI(width, height);
+		MainUI frame = null;
+		try{
+		 frame = new MainUI(width, height);
 		frame.setUndecorated(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(frame);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
         frame.setSize(width, height);
         frame.setVisible(true);
 	}

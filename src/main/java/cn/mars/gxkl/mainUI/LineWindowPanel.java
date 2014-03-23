@@ -8,8 +8,6 @@ import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.util.Date;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
