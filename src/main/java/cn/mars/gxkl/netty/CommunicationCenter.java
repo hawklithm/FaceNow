@@ -5,10 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JFrame;
-
-import cn.mars.gxkl.mainUI.EmergencyWindow;
-import cn.mars.gxkl.mainUI.LineWindowPanel;
 import cn.mars.gxkl.protocol.AppProtocol;
 import cn.mars.gxkl.protocol.FrontEndingCommunicationProtocol;
 import cn.mars.gxkl.protocol.HandleDetails;
@@ -18,16 +14,16 @@ import cn.mars.gxkl.utils.Pair;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class MessageManage implements Runnable {
+public class CommunicationCenter implements Runnable {
 
-	private LineWindowPanel[] line;
+//	private LineWindowPanel[] line;
 	private ClientService client;
 	private boolean closed = false;
 	private boolean sendRequest = false;//,ack = false,connectionStatus = true;
 	private String url;
 	private String processNow;
-	private JFrame frame;
-	private EmergencyWindow emerg;
+//	private JFrame frame;
+//	private EmergencyWindow emerg;
 	private Map<Integer,Integer> rfid2Index;
 	private int indexNow;
 
@@ -47,14 +43,14 @@ public class MessageManage implements Runnable {
 //		this.emerg = null;
 //	}
 	
-	public MessageManage(LineWindowPanel[] line, String processNow, JFrame frame) {
+	public CommunicationCenter( String processNow) {
 		this.rfid2Index = new HashMap<Integer,Integer>();
 		rfid2Index.put(-1, -1);
 		this.indexNow = 0;
-		this.line = line;
+//		this.line = line;
 		this.processNow = processNow;
-		this.frame = frame;
-		this.emerg = null;
+//		this.frame = frame;
+//		this.emerg = null;
 		this.url = "/ProcessInfoManager";
 		initialization();
 	}
@@ -111,13 +107,13 @@ public class MessageManage implements Runnable {
 		}
 		for(int i=0;i<info.size();i++) {
 			Pair<Integer, String> pair = info.get(i);
-			if(emerg == null) {
-				emerg = new EmergencyWindow(300, 200, frame);
-			}
-			emerg.append(pair.getLast());
-			if(!emerg.isShow()) {
-				emerg.open();
-			}
+//			if(emerg == null) {
+//				emerg = new EmergencyWindow(300, 200, frame);
+//			}
+//			emerg.append(pair.getLast());
+//			if(!emerg.isShow()) {
+//				emerg.open();
+//			}
 		}
 	}
 	
@@ -133,7 +129,7 @@ public class MessageManage implements Runnable {
 		for(int i=0;i<info.size();i++) {
 			Pair<Integer, String> pair = info.get(i);
 			System.out.println("pair.getLast(): "+pair.getLast());
-			line[pair.getFirst()].append(pair.getLast());
+//			line[pair.getFirst()].append(pair.getLast());
 		}
 	}
 	
@@ -185,7 +181,7 @@ public class MessageManage implements Runnable {
 					int rfid = handleDetails.getRfid();
 					if((id=rfid2Index.get(rfid))==null) {
 						id = indexNow++;
-						line[id].setRFID(""+rfid);
+//						line[id].setRFID(""+rfid);
 						rfid2Index.put(rfid, id);
 					}
 					try {
