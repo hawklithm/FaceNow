@@ -30,8 +30,8 @@ public class LiveMessageProtocol {
 		condition.put(ID, ""+id);
 	}
 	@SuppressWarnings("unchecked")
-	public ArrayList<ArrayList<Map<String,Object>>> getRetValue() {
-		return (ArrayList<ArrayList<Map<String,Object>>>)condition.get(RETVALUE);
+	public ArrayList<Map<String,Object>> getRetValue() {
+		return (ArrayList<Map<String,Object>>)condition.get(RETVALUE);
 	}
 	public void setRetValue(List<HandleDetails> retValue) {
 		condition.put(RETVALUE, retValue);

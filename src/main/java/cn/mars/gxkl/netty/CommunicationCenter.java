@@ -13,6 +13,7 @@ import cn.mars.gxkl.utils.Pair;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.multiagent.hawklithm.item.dataobject.ItemInfoDO;
 
 public class CommunicationCenter implements Runnable {
 
@@ -168,13 +169,13 @@ public class CommunicationCenter implements Runnable {
 				}
 				Integer id = 0;
 //				int id = pro.getId();
-				List<ArrayList<Map<String,Object>>> retValue = pro.getRetValue();
+				List<Map<String,Object>> retValue = pro.getRetValue();
 				int size = retValue.size();
 				for(int j=0;j<size;j++) {
 //					System.out.println(retValue.get(j).get(0));'
 					HandleDetails handleDetails;
 					try {
-						handleDetails = new HandleDetails(retValue.get(j).get(0));
+						handleDetails = new HandleDetails(retValue.get(j));
 					}catch(IndexOutOfBoundsException e) {
 						continue;
 					}
@@ -202,6 +203,12 @@ public class CommunicationCenter implements Runnable {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	private ItemInfoDO Map2ItemInfoDO(Map<String, Object> map){
+		ItemInfoDO ret=new ItemInfoDO();
+		
+		return ret;
 	}
 
 	private List<Pair<Integer,String>> handleRetValue(int id,List<Object> rfid,String dir,String type) {
