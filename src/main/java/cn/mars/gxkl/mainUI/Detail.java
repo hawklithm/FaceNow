@@ -17,7 +17,7 @@ import cn.mars.gxkl.controller.dataobject.ObjectPair;
 
 public class Detail extends JPanel implements DetailContoller{
 
-	private List<ArrayList<ObjectPair>> objects;
+	private List<ArrayList<ObjectPair>> objects=new ArrayList<ArrayList<ObjectPair>>();
 	private JLabel lblNewLabel;
 	private JComboBox comboBox;
 	JComboBox comboBox_1 = new JComboBox();

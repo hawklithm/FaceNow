@@ -16,6 +16,7 @@ public class InfoCenter {
 	
 	public void initial(){
 		communicationCenter= new CommunicationCenter(Constant.processName[0]);
+		new Thread(communicationCenter).start();
 	}
 	
 	public MachineInfoController getMachineInfoController() {

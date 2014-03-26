@@ -13,6 +13,7 @@ import cn.mars.gxkl.utils.Pair;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.hawklithm.cerberus.protocol.ProtocolUtils;
 import com.multiagent.hawklithm.item.dataobject.ItemInfoDO;
 
 public class CommunicationCenter implements Runnable {
@@ -129,7 +130,8 @@ public class CommunicationCenter implements Runnable {
 		}
 		for(int i=0;i<info.size();i++) {
 			Pair<Integer, String> pair = info.get(i);
-			System.out.println("pair.getLast(): "+pair.getLast());
+//			System.out.println("pair.getLast(): "+pair.getLast());
+			System.out.println("\npair: "+pair.getFirst()+"\t"+pair.getLast());
 //			line[pair.getFirst()].append(pair.getLast());
 		}
 	}
@@ -167,7 +169,7 @@ public class CommunicationCenter implements Runnable {
 				if (!pro.getProcessName().equals(processNow)) {
 					continue;
 				}
-				Integer id = 0;
+//				Integer id = 0;
 //				int id = pro.getId();
 				List<Map<String,Object>> retValue = pro.getRetValue();
 				int size = retValue.size();
@@ -179,17 +181,17 @@ public class CommunicationCenter implements Runnable {
 					}catch(IndexOutOfBoundsException e) {
 						continue;
 					}
-					int rfid = handleDetails.getRfid();
-					if((id=rfid2Index.get(rfid))==null) {
-						id = indexNow++;
-//						line[id].setRFID(""+rfid);
-						rfid2Index.put(rfid, id);
-					}
+					int rfid = handleDetails.getMachineRfid();
+//					if((id=rfid2Index.get(rfid))==null) {
+//						id = indexNow++;
+////						line[id].setRFID(""+rfid);
+//						rfid2Index.put(rfid, id);
+//					}
 					try {
-						ans.addAll(handleRetValue(id,handleDetails.getItemAdd(),"开始处理","器械"));
-						ans.addAll(handleRetValue(id,handleDetails.getItemRemove(),"处理完毕","器械"));
-						ans.addAll(handleRetValue(id,handleDetails.getPackageAdd(),"开始处理","手术包"));
-						ans.addAll(handleRetValue(id,handleDetails.getPackageRemove(),"处理结束","手术包"));
+						ans.addAll(handleRetValue(rfid,handleDetails.getItemAdd(),"开始处理","器械"));
+						ans.addAll(handleRetValue(rfid,handleDetails.getItemRemove(),"处理完毕","器械"));
+						ans.addAll(handleRetValue(rfid,handleDetails.getPackageAdd(),"开始处理","手术包"));
+						ans.addAll(handleRetValue(rfid,handleDetails.getPackageRemove(),"处理结束","手术包"));
 					}catch(NullPointerException e) {
 						continue;
 					}
@@ -205,9 +207,13 @@ public class CommunicationCenter implements Runnable {
 		return null;
 	}
 	
-	private ItemInfoDO Map2ItemInfoDO(Map<String, Object> map){
+	private ItemInfoDO map2ItemInfoDO(Map<String, Object> map){
 		ItemInfoDO ret=new ItemInfoDO();
-		
+		try {
+			ProtocolUtils.assignPropertyFromMap(map, ret);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return ret;
 	}
 
@@ -216,7 +222,8 @@ public class CommunicationCenter implements Runnable {
 		int size = rfid.size();
 		for(int i=0;i<size;i++) {
 //			System.out.println(rfid.get(i).toString());
-			ans.add(new Pair<Integer, String>(id,type+" RFID:"+rfid.get(i).toString()+" "+dir));
+			ItemInfoDO itemInfo=map2ItemInfoDO((Map<String,Object>)rfid.get(i));
+			ans.add(new Pair<Integer, String>(id,type+" "+itemInfo.getItemName()+" "+dir+" RFID:"+itemInfo.getItemId().toString()));
 		}
 		return ans;
 	}

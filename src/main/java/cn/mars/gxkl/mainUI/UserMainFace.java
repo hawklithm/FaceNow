@@ -41,7 +41,7 @@ public class UserMainFace {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(InfoCenter infoCenter) {
+	private void initialize(final InfoCenter infoCenter) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 721, 537);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,7 +51,7 @@ public class UserMainFace {
 		frame.getContentPane().setLayout(gridBagLayout);
 		
 		
-		Detail detailPannel = new Detail();
+		final Detail detailPannel = new Detail();
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
 		gbc_comboBox_1.fill = GridBagConstraints.BOTH;
 		gbc_comboBox_1.gridheight=1;
@@ -60,7 +60,7 @@ public class UserMainFace {
 		gbc_comboBox_1.gridy = 0;
 		frame.getContentPane().add(detailPannel, gbc_comboBox_1);
 		
-		WorkerInfoPannel workerPannel = new WorkerInfoPannel();
+		final WorkerInfoPannel workerPannel = new WorkerInfoPannel();
 		GridBagConstraints gbc_workerPannel = new GridBagConstraints();
 		gbc_workerPannel.insets = new Insets(5, 5, 5, 5);
 		gbc_workerPannel.fill = GridBagConstraints.BOTH;
@@ -70,7 +70,7 @@ public class UserMainFace {
 		gbc_workerPannel.gridy = 0;
 		frame.getContentPane().add(workerPannel, gbc_workerPannel);
 		
-		RealTimeDetail realTimeDetail = new RealTimeDetail(2,"工段","车间");
+		final RealTimeDetail realTimeDetail = new RealTimeDetail(2,"工段","车间");
 		GridBagConstraints gbc_realTimeDetail = new GridBagConstraints();
 		gbc_realTimeDetail.insets = new Insets(5, 5, 5, 5);
 		gbc_realTimeDetail.fill = GridBagConstraints.BOTH;
@@ -81,7 +81,7 @@ public class UserMainFace {
 		
 		
 		
-		MachineListPannel machineList = new MachineListPannel();
+		final MachineListPannel machineList = new MachineListPannel();
 		GridBagConstraints gbc_machineList = new GridBagConstraints();
 		gbc_machineList.insets = new Insets(5, 5, 5, 5);
 		gbc_machineList.fill = GridBagConstraints.BOTH;
@@ -90,10 +90,20 @@ public class UserMainFace {
 		gbc_machineList.gridheight=2;
 		frame.getContentPane().add(machineList, gbc_machineList);
 		
-		infoCenter.setDetailController(detailPannel);
-		infoCenter.setMachineInfoController(machineList);
-		infoCenter.setRealTimeTabController(realTimeDetail);
-		infoCenter.setWorkerBaseInfoController(workerPannel);
+		Thread thread=new Thread(new Runnable(){
+
+			@Override
+			public void run() {
+				infoCenter.setDetailController(detailPannel);
+				infoCenter.setMachineInfoController(machineList);
+				infoCenter.setRealTimeTabController(realTimeDetail);
+				infoCenter.setWorkerBaseInfoController(workerPannel);	
+				infoCenter.initial();
+			}
+				
+		});
+		thread.start();
+		
 		
 	}
 
