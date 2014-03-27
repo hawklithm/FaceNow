@@ -15,7 +15,7 @@ public class InfoCenter {
 	private CommunicationCenter communicationCenter;
 	
 	public void initial(){
-		communicationCenter= new CommunicationCenter(Constant.processName[0]);
+		communicationCenter= new CommunicationCenter(Constant.processName[0],this);
 		new Thread(communicationCenter).start();
 	}
 	

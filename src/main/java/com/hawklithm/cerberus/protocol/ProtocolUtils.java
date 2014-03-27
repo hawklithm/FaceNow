@@ -54,22 +54,29 @@ public class ProtocolUtils {
 		}
 	}
 
-	static public void assignPropertyFromMap(Map<String, Object> map, Object object)
+	/**
+	 * 如果map是由json转过来的，可能类型出错
+	 * @param map
+	 * @param object
+	 * @param clazz
+	 * @throws Exception
+	 */
+	static public void assignPropertyFromMap(Map<String, Object> map, Object object,Class<?> clazz)
 			throws Exception {
-		Class<?> clazz = object.getClass();
-		Field[] fields = clazz.getFields();
+//		Class<?> clazz =object.getClass();
+		Field[] fields = clazz.getDeclaredFields();
 		// Method[] methods=clazz.getMethods();
 
 		for (Field index : fields) {
 			String property = index.getName();
-			// String
-			// methodName="set"+Character.toUpperCase(property.charAt(0))+property.substring(1);
-			// Method method=clazz.getMethod(methodName);
-			MethodHandles.Lookup lookup = MethodHandles.lookup();
-			MethodHandle handle = lookup.findSetter(clazz, property, index.getType());
+			 String methodName="set"+Character.toUpperCase(property.charAt(0))+property.substring(1);
+			 Method method=clazz.getMethod(methodName,index.getType());
+//			MethodHandles.Lookup lookup = MethodHandles.lookup();
+//			MethodHandle handle = lookup.findSetter(clazz, property, index.getType());
 			if (map.containsKey(property)) {
 				try {
-					handle.invoke(object, map.get(property));
+					Object test=map.get(property);
+					method.invoke(object, index.getType().cast(map.get(property)));
 				} catch (Throwable e) {
 					e.printStackTrace();
 				}

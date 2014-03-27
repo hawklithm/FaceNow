@@ -66,6 +66,7 @@ public class ClientService {
 					emergCache.add(response);
 				}
 				else if(status.equals("connected")){
+					System.out.println("add message to buffer");
 					infoCache.add(response);
 				}
 			}
