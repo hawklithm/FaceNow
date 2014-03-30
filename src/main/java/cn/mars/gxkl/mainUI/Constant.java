@@ -6,10 +6,10 @@ import java.awt.Color;
 public class Constant {
 	public static final Color red = new Color(0x89,1,1);
 	public static final Color lightGray = new Color(0xd9,0xd9,0xd9);
-	public static final String[] topNavItemNames = {"å™¨æ¢°åˆ†æ‹£","æ¸…æ´—æ¶ˆæ¯’","æ£€æŸ¥&æ‰“åŒ…","äºŒæ¬¡ç­èŒ","æ— èŒå­˜æ”¾"};
+	public static final String[] topNavItemNames = {"Æ÷Ğµ·Ö¼ğ","ÇåÏ´Ïû¶¾","¼ì²é&´ò°ü","¶ş´ÎÃğ¾ú","ÎŞ¾ú´æ·Å"};
 	public static final String browsers[] = {"google-chrome","firefox"};
 	public static final String osNames[] = {"Windows","Mac OS","Linux","Unix"};
-	public static final String lineTitle[] = {" æœåŠ¡å°"," æ“ä½œå°"," æµæ°´çº¿"," æ“ä½œå°"," ä»“åº“"};
+	public static final String lineTitle[] = {" ·şÎñÌ¨"," ²Ù×÷Ì¨"," Á÷Ë®Ïß"," ²Ù×÷Ì¨"," ²Ö¿â"};
 	public static final String processName[] = {"sortingprocess","cleananddisinfectprocess",
 												"packagingprocess","secondarydisinfectprocess",
 												"sterilestorageprocess"};

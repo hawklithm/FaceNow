@@ -200,12 +200,12 @@ public class CommunicationCenter implements Runnable {
 					// rfid2Index.put(rfid, id);
 					// }
 					try {
-						ans.addAll(handleRetValue(rfid, handleDetails.getItemAdd(), "å¼€å§‹å¤„ç†", "å™¨æ¢°"));
-						ans.addAll(handleRetValue(rfid, handleDetails.getItemRemove(), "å¤„ç†å®Œæ¯•", "å™¨æ¢°"));
-						ans.addAll(handleRetValue(rfid, handleDetails.getPackageAdd(), "å¼€å§‹å¤„ç†",
-								"æ‰‹æœ¯åŒ…"));
-						ans.addAll(handleRetValue(rfid, handleDetails.getPackageRemove(), "å¤„ç†ç»“æŸ",
-								"æ‰‹æœ¯åŒ…"));
+						ans.addAll(handleRetValue(rfid, handleDetails.getItemAdd(), "¿ªÊ¼´¦Àí", "Æ÷Ğµ"));
+						ans.addAll(handleRetValue(rfid, handleDetails.getItemRemove(), "´¦ÀíÍê±Ï", "Æ÷Ğµ"));
+						ans.addAll(handleRetValue(rfid, handleDetails.getPackageAdd(), "¿ªÊ¼´¦Àí",
+								"ÊÖÊõ°ü"));
+						ans.addAll(handleRetValue(rfid, handleDetails.getPackageRemove(), "´¦Àí½áÊø",
+								"ÊÖÊõ°ü"));
 					} catch (NullPointerException e) {
 						continue;
 					}
@@ -224,9 +224,9 @@ public class CommunicationCenter implements Runnable {
 	public String changeCharset(String str, String oldCharset, String newCharset)
 			throws UnsupportedEncodingException {
 		if (str != null) {
-			// ç”¨æ—§çš„å­—ç¬¦ç¼–ç è§£ç å­—ç¬¦ä¸²ã€‚è§£ç å¯èƒ½ä¼šå‡ºç°å¼‚å¸¸ã€‚
+			// ÓÃ¾ÉµÄ×Ö·û±àÂë½âÂë×Ö·û´®¡£½âÂë¿ÉÄÜ»á³öÏÖÒì³£¡£
 			byte[] bs = str.getBytes(oldCharset);
-			// ç”¨æ–°çš„å­—ç¬¦ç¼–ç ç”Ÿæˆå­—ç¬¦ä¸²
+			// ÓÃĞÂµÄ×Ö·û±àÂëÉú³É×Ö·û´®
 			return new String(bs, newCharset);
 		}
 		return null;

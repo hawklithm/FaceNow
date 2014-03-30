@@ -23,7 +23,7 @@ public class Detail extends JPanel implements DetailContoller{
 	JComboBox comboBox_1 = new JComboBox();
 	private JLabel lblNewLabel_1;
 	private JTextArea textArea;
-	JLabel lblNewLabel_2 = new JLabel("æ‰‹æœ¯é’³");
+	JLabel lblNewLabel_2 = new JLabel("ÊÖÊõÇ¯");
 	JComboBox comboBox_2 = new JComboBox();
 	
 	public Detail() {
@@ -32,7 +32,7 @@ public class Detail extends JPanel implements DetailContoller{
 		gridBagLayout.rowWeights = new double[]{0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,0.1, 0.1};
 		setLayout(gridBagLayout);
 		
-		 lblNewLabel = new JLabel("æ‰‹æœ¯åˆ€");
+		 lblNewLabel = new JLabel("ÊÖÊõµ¶");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 0;
@@ -47,7 +47,7 @@ public class Detail extends JPanel implements DetailContoller{
 		gbc_comboBox.gridy = 0;
 		add(comboBox, gbc_comboBox);
 		
-		 lblNewLabel_1 = new JLabel("é”¤å­");
+		 lblNewLabel_1 = new JLabel("´¸×Ó");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 0;
@@ -62,7 +62,7 @@ public class Detail extends JPanel implements DetailContoller{
 		gbc_comboBox_1.gridy = 1;
 		add(comboBox_1, gbc_comboBox_1);
 		
-		 lblNewLabel_2 = new JLabel("æ‰‹æœ¯é’³");
+		 lblNewLabel_2 = new JLabel("ÊÖÊõÇ¯");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 0;

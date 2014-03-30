@@ -24,7 +24,7 @@ public abstract class NettyHandler extends SimpleChannelHandler {
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, ExceptionEvent e) throws Exception {
 		if (e.getCause() instanceof IOException) {
-			System.out.println("杩炴帴閿欒,鏂紑");
+			System.out.println("连接错误,断开");
 			ctx.getChannel().close();
 		} else {
 			e.getCause().printStackTrace();
@@ -57,7 +57,7 @@ public abstract class NettyHandler extends SimpleChannelHandler {
 	
 	/**
 	  * 
-	  * 淇℃伅澶勭悊
+	  * 信息处理
 	  *
 	  **/
 	public abstract void messageHandler(String message);

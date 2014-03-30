@@ -29,7 +29,7 @@ public class RealTimeDetail extends JPanel implements RealTimeTabController{
 		gbc_tabbedPane.gridy = 0;
 		add(tabbedPane, gbc_tabbedPane);
 		
-		String[] headers = { "æœºå™¨ç¼–å·", "ä¿¡æ¯"  };
+		String[] headers = { "»úÆ÷±àºÅ", "ĞÅÏ¢"  };
 
 		DefaultTableModel model = new DefaultTableModel(null, headers) {
 
@@ -45,7 +45,7 @@ public class RealTimeDetail extends JPanel implements RealTimeTabController{
 			tables[i]=new JTable(model);
 			String name;
 			if (i>=nameListLength){
-				name="æœªå‘½å";
+				name="Î´ÃüÃû";
 			}else {
 				name=names[i];
 			}

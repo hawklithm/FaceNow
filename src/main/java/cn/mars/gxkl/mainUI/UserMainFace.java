@@ -8,6 +8,7 @@ import java.awt.Insets;
 import javax.swing.JFrame;
 
 import org.hawklithm.center.InfoCenter;
+import javax.swing.JScrollPane;
 
 public class UserMainFace {
 
@@ -47,12 +48,13 @@ public class UserMainFace {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWeights = new double[]{0.2,0.8,0.2};
-		gridBagLayout.rowWeights = new double[]{0.6,0.4};
+		gridBagLayout.rowWeights = new double[]{0.7,0.3};
 		frame.getContentPane().setLayout(gridBagLayout);
 		
 		
 		final Detail detailPannel = new Detail();
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
+		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox_1.fill = GridBagConstraints.BOTH;
 		gbc_comboBox_1.gridheight=1;
 		gbc_comboBox_1.gridwidth=1;
@@ -70,25 +72,27 @@ public class UserMainFace {
 		gbc_workerPannel.gridy = 0;
 		frame.getContentPane().add(workerPannel, gbc_workerPannel);
 		
-		final RealTimeDetail realTimeDetail = new RealTimeDetail(2,"å·¥æ®µ","è½¦é—´");
-		GridBagConstraints gbc_realTimeDetail = new GridBagConstraints();
-		gbc_realTimeDetail.insets = new Insets(5, 5, 5, 5);
-		gbc_realTimeDetail.fill = GridBagConstraints.BOTH;
-		gbc_realTimeDetail.gridx = 1;
-		gbc_realTimeDetail.gridy = 1;
-		gbc_realTimeDetail.gridwidth=1;
-		frame.getContentPane().add(realTimeDetail, gbc_realTimeDetail);
-		
 		
 		
 		final MachineListPannel machineList = new MachineListPannel();
 		GridBagConstraints gbc_machineList = new GridBagConstraints();
-		gbc_machineList.insets = new Insets(5, 5, 5, 5);
+		gbc_machineList.insets = new Insets(5, 5, 5, 0);
 		gbc_machineList.fill = GridBagConstraints.BOTH;
 		gbc_machineList.gridx = 2;
 		gbc_machineList.gridy = 0;
 		gbc_machineList.gridheight=2;
 		frame.getContentPane().add(machineList, gbc_machineList);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 1;
+		gbc_scrollPane.gridy = 1;
+		frame.getContentPane().add(scrollPane, gbc_scrollPane);
+		
+		final RealTimeDetail realTimeDetail = new RealTimeDetail(2,"¹¤¶Î","³µ¼ä");
+		scrollPane.setViewportView(realTimeDetail);
 		
 		Thread thread=new Thread(new Runnable(){
 
