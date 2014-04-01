@@ -1,7 +1,10 @@
 package cn.mars.gxkl.protocol;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import sun.security.krb5.internal.Ticket;
 
 public class HandleDetails {
 
@@ -9,20 +12,20 @@ public class HandleDetails {
 	final private String ITEM_ADD = "itemAdd", ITEM_REMOVE = "itemRemove",
 			PACKAGE_ADD = "packageAdd", PACKAGE_REMOVE = "packageRemove",
 			MACHINE_RFID = "machineRFID", STAFF_RFID = "staffRFID", CUBAGE = "cubage",
-			ITEM_RFIDS = "itemRFIDs", PACKAGE_RFIDS = "packageRFIDs";
+			ITEM_RFIDS = "itemRFIDs", PACKAGE_RFIDS = "packageRFIDs",TIME_STAMP="timeStamp",MESSAGE="message";
 
-	// private List<String> itemAdd,itemRemove,packageAdd,packageRemove;
-	// private int rfid,staffRFID,cubage;
-	// private List<String> itemRFIDs,packageRFIDs;
-	// public HandleDetails() {}
-	// public HandleDetails() {
-	// itemAdd = new ArrayList<String>();
-	// itemRemove = new ArrayList<String>();
-	// packageAdd = new ArrayList<String>();
-	// packageRemove = new ArrayList<String>();
-	// itemRFIDs = new ArrayList<String>();
-	// packageRFIDs = new ArrayList<String>();
-	// }
+	public void setMessage(String message){
+		condition.put(MESSAGE ,message);
+	}
+	public String getMessage(){
+		return (String) condition.get(MESSAGE);
+	}
+	public void setTimeStamp(Date time){
+		condition.put(TIME_STAMP, time);
+	}
+	public Date getTimeStamp(){
+		return (Date)condition.get(TIME_STAMP);
+	}
 	public void setCondition(Map<String, Object> condition) {
 		this.condition = condition;
 	}
